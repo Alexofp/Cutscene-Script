@@ -1,0 +1,22 @@
+say "You approach Rahi"
+say "Rahi", "You are NOT walking through here."
+say "Player", "Why not?"
+say "Rahi", "BEcause I need an arbitrary reason to stop you."
+say "Rahi", "If you wanna walk past me, you will need to give me at least 150$!"
+
+ask "What do you wanna do?"
+if get.money < 150: disabledAnswer "Pay 150$"
+else: answer "Pay 150$", pay150
+answer "Step away", leave
+waitAnswer
+
+> pay150
+inc.money -150
+say "You give Rahi 150$"
+say "Rahi", "GOOD JOB! Enjoy your gambling addiction!"
+killRahi
+say "Rahi poofs. Demo over."
+stopScript
+
+> leave
+stopScript

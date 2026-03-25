@@ -1,0 +1,9 @@
+print "What is love?"
+sleep 1
+print "Baby don't hurt me."
+sleep 1
+print "Don't hurt me."
+sleep 1
+print "No more"
+sleep 2
+print "also 3*23 is ", 3*23

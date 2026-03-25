@@ -1,0 +1,20 @@
+say "You approach the ATM"
+
+> askloop
+ask "ATM says: "+str(get.moneyATM)+"$. What do you wanna do?"
+answer "Take out 10$", take10
+answer "Step away", leave
+waitAnswer
+
+> take10
+if get.moneyATM < 10: jump notEnough
+inc.moneyATM -10
+inc.money 10
+jump askloop
+
+> notEnough
+say "Not enough money! You're a poor starving game developer!"
+jump askloop
+
+> leave
+stopScript

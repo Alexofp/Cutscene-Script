@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c2qjgv6wli53t"]
+
+[ext_resource type="Script" uid="uid://rsjtrtvhaayp" path="res://Demo/TalkUI.gd" id="1_iprvh"]
+
+[node name="TalkUI" type="Control" unique_id=1424968126]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iprvh")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=624330376]
+self_modulate = Color(1, 1, 1, 0.69803923)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -172.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=148966010]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1383034426]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=838570447]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Hello world"
+
+[node name="ButtonContainer" type="VBoxContainer" parent="." unique_id=529992621]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -20.0
+offset_right = 23.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

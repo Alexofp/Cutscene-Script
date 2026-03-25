@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://b4k3jpg70u3ld"]
+
+[ext_resource type="Script" uid="uid://rsyk0qccenay" path="res://Demo/DemoMain.gd" id="1_8dgi1"]
+[ext_resource type="PackedScene" uid="uid://c2qjgv6wli53t" path="res://Demo/TalkUI.tscn" id="2_5mlbw"]
+[ext_resource type="Script" uid="uid://bu5hj68easppl" path="res://Demo/Player.gd" id="3_oilws"]
+[ext_resource type="PackedScene" uid="uid://dvphmbf4brett" path="res://Demo/UseZone.tscn" id="4_8kwl0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5mlbw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_oilws"]
+sky_material = SubResource("ProceduralSkyMaterial_5mlbw")
+
+[sub_resource type="Environment" id="Environment_8kwl0"]
+background_mode = 2
+sky = SubResource("Sky_oilws")
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_5mlbw"]
+size = Vector3(11.623047, 1, 7.781006)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oilws"]
+size = Vector3(11.623047, 1, 7.781006)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5mlbw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5mlbw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8kwl0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4sn0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="DemoMain" type="Node3D" unique_id=1849334804]
+script = ExtResource("1_8dgi1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2016194981]
+environment = SubResource("Environment_8kwl0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1305580103]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="TalkUI" parent="." unique_id=1424968126 instance=ExtResource("2_5mlbw")]
+unique_name_in_owner = true
+visible = false
+
+[node name="MoneyLabel" type="Label" parent="." unique_id=85424315]
+unique_name_in_owner = true
+offset_left = 20.0
+offset_top = 25.0
+offset_right = 101.0
+offset_bottom = 48.0
+text = "Money: X$"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1487756101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_5mlbw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=458877876]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1778599039]
+shape = SubResource("BoxShape3D_oilws")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=917451469]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2894006, 0)
+collision_layer = 3
+script = ExtResource("3_oilws")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player" unique_id=730400223]
+mesh = SubResource("CapsuleMesh_5mlbw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=797923406]
+shape = SubResource("CapsuleShape3D_5mlbw")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1116312599]
+transform = Transform3D(1, 0, 0, 0, 0.65149736, 0.7586509, 0, -0.7586509, 0.65149736, 0, 4.193709, 3.8207507)
+current = true
+
+[node name="UseZone" parent="." unique_id=1291803952 instance=ExtResource("4_8kwl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7839189, 0, -1.9591303)
+scriptToRun = "res://Demo/Scripts/ATM.txt"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="UseZone" unique_id=1632091906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45354223, 0)
+mesh = SubResource("BoxMesh_8kwl0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UseZone" unique_id=169600547]
+transform = Transform3D(0.87612265, 0, 0, 0, 0.8535054, 0.19778638, 0, -0.19778638, 0.8535054, 0, 1.1956532, -0.09596968)
+mesh = SubResource("BoxMesh_8kwl0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="UseZone" unique_id=343289439]
+transform = Transform3D(0.6346395, 0, 0, 0, 0.5232806, 0.028595103, 0, -0.121262, 0.12339615, 0, 1.3563225, 0.2866615)
+mesh = SubResource("BoxMesh_8kwl0")
+surface_material_override/0 = SubResource("StandardMaterial3D_w4sn0")
+
+[node name="UseZone2" parent="." unique_id=1450561395 instance=ExtResource("4_8kwl0")]
+transform = Transform3D(0.7582408, 0, 0.6519746, 0, 1, 0, -0.6519746, 0, 0.7582408, -3.7617903, 0, -1.9591303)
+scriptToRun = "res://Demo/Scripts/SlotMachine.txt"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="UseZone2" unique_id=1592189096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45354223, 0)
+mesh = SubResource("BoxMesh_8kwl0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="UseZone2" unique_id=1592957084]
+transform = Transform3D(0.1, 0, 0, 0, 0.74047095, -0.081791, 0, 1.0526502, 0.05753465, 0.5569744, 1.2536877, 0.08431029)
+mesh = SubResource("BoxMesh_8kwl0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UseZone2" unique_id=1828475770]
+transform = Transform3D(0.87612265, 0, 0, 0, 0.8535054, 0.19778638, 0, -0.19778638, 0.8535054, 0, 1.1956532, -0.09596968)
+mesh = SubResource("BoxMesh_8kwl0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="UseZone2" unique_id=1424699064]
+transform = Transform3D(0.6346395, 0, 0, 0, 0.5232806, 0.028595103, 0, -0.121262, 0.12339615, 0, 1.3563225, 0.2866615)
+mesh = SubResource("BoxMesh_8kwl0")
+surface_material_override/0 = SubResource("StandardMaterial3D_w4sn0")
+
+[node name="UseZone3" parent="." unique_id=450480144 instance=ExtResource("4_8kwl0")]
+transform = Transform3D(0.7582408, 0, 0.6519746, 0, 1, 0, -0.6519746, 0, 0.7582408, -0.67404795, 0, -3.23167)
+scriptToRun = "res://Demo/Scripts/Rahi.txt"
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="UseZone3" unique_id=1288716350]
+transform = Transform3D(0.7582408, 0, -0.6519746, 0, 1, 0, 0.6519746, 0, 0.7582408, 0, 0.95582056, 0)
+mesh = SubResource("CapsuleMesh_5mlbw")
+
+[connection signal="onButtonPressed" from="TalkUI" to="." method="_on_talk_ui_on_button_pressed"]
+[connection signal="onTextAdvance" from="TalkUI" to="." method="_on_talk_ui_on_text_advance"]

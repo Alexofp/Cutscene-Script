@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dvphmbf4brett"]
+
+[ext_resource type="Script" uid="uid://dmu6fu87hi1vs" path="res://Demo/UseZone.gd" id="1_aytte"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oilws"]
+radius = 1.1137695
+
+[node name="UseZone" type="Area3D" unique_id=1291803952]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_aytte")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=193010403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8699938, 0)
+shape = SubResource("CylinderShape3D_oilws")
+
+[node name="PressELabel" type="Label3D" parent="." unique_id=1316157691]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5820467, 0)
+billboard = 1
+text = "Press E"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
